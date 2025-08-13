@@ -69,6 +69,53 @@ displayFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 local titleCorner = Instance.new("UICorner", titleBar)
 titleCorner.CornerRadius = UDim.new(0, 12)
 
+-- Automation Content
+local automationFrame = Instance.new("Frame", displayFrame)
+automationFrame.Name = "AutomationFrame"
+automationFrame.Size = UDim2.new(1, 0, 1, 0)
+automationFrame.BackgroundTransparency = 1
+
+local automationLabel = Instance.new("TextLabel", automationFrame)
+automationLabel.Text = "Automation Panel"
+automationLabel.Size = UDim2.new(1, 0, 0, 50)
+automationLabel.Position = UDim2.new(0, 0, 0, 10)
+automationLabel.BackgroundTransparency = 1
+automationLabel.TextColor3 = Color3.new(1, 1, 1)
+automationLabel.Font = Enum.Font.SourceSansBold
+automationLabel.TextSize = 24
+
+-- Misc Content
+local miscFrame = Instance.new("Frame", displayFrame)
+miscFrame.Name = "MiscFrame"
+miscFrame.Size = UDim2.new(1, 0, 1, 0)
+miscFrame.BackgroundTransparency = 1
+miscFrame.Visible = false
+
+local miscLabel = Instance.new("TextLabel", miscFrame)
+miscLabel.Text = "Misc Panel"
+miscLabel.Size = UDim2.new(1, 0, 0, 50)
+miscLabel.Position = UDim2.new(0, 0, 0, 10)
+miscLabel.BackgroundTransparency = 1
+miscLabel.TextColor3 = Color3.new(1, 1, 1)
+miscLabel.Font = Enum.Font.SourceSansBold
+miscLabel.TextSize = 24
+
+-- About Content
+local aboutFrame = Instance.new("Frame", displayFrame)
+aboutFrame.Name = "AboutFrame"
+aboutFrame.Size = UDim2.new(1, 0, 1, 0)
+aboutFrame.BackgroundTransparency = 1
+aboutFrame.Visible = false
+
+local aboutLabel = Instance.new("TextLabel", aboutFrame)
+aboutLabel.Text = "About Panel"
+aboutLabel.Size = UDim2.new(1, 0, 0, 50)
+aboutLabel.Position = UDim2.new(0, 0, 0, 10)
+aboutLabel.BackgroundTransparency = 1
+aboutLabel.TextColor3 = Color3.new(1, 1, 1)
+aboutLabel.Font = Enum.Font.SourceSansBold
+aboutLabel.TextSize = 24
+
 local menuCorner = Instance.new("UICorner", menuFrame)
 menuCorner.CornerRadius = UDim.new(0, 12)
 
