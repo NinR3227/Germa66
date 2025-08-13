@@ -10,7 +10,6 @@ mainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
 mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 mainFrame.BorderSizePixel = 0
 
--- Corner Radius
 local corner = Instance.new("UICorner", mainFrame)
 corner.CornerRadius = UDim.new(0, 12)
 
@@ -51,25 +50,42 @@ minimizeButton.TextColor3 = Color3.new(1, 1, 1)
 minimizeButton.Font = Enum.Font.SourceSansBold
 minimizeButton.TextSize = 20
 
--- Menu Frame (Left 1/3)
+-- Menu Frame
 local menuFrame = Instance.new("Frame", mainFrame)
 menuFrame.Name = "MenuFrame"
 menuFrame.Size = UDim2.new(0.33, 0, 1, -40)
 menuFrame.Position = UDim2.new(0, 0, 0, 40)
 menuFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 
--- Display Frame (Right 2/3)
+-- Display Frame
 local displayFrame = Instance.new("Frame", mainFrame)
 displayFrame.Name = "DisplayFrame"
 displayFrame.Size = UDim2.new(0.67, 0, 1, -40)
 displayFrame.Position = UDim2.new(0.33, 0, 0, 40)
 displayFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 
--- Round corner for child frames
-local titleCorner = Instance.new("UICorner", titleBar)
-titleCorner.CornerRadius = UDim.new(0, 12)
+-- Corners
+Instance.new("UICorner", titleBar).CornerRadius = UDim.new(0, 12)
+Instance.new("UICorner", menuFrame).CornerRadius = UDim.new(0, 12)
+Instance.new("UICorner", displayFrame).CornerRadius = UDim.new(0, 12)
 
--- Automation Content
+-- Menu Buttons
+local buttonNames = {"Automation", "Misc", "About"}
+
+for i, name in ipairs(buttonNames) do
+    local button = Instance.new("TextButton", menuFrame)
+    button.Name = name .. "Button"
+    button.Text = name
+    button.Size = UDim2.new(1, -20, 0, 40)
+    button.Position = UDim2.new(0, 10, 0, (i - 1) * 50 + 10)
+    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.Font = Enum.Font.SourceSansBold
+    button.TextSize = 18
+    Instance.new("UICorner", button).CornerRadius = UDim.new(0, 8)
+end
+
+-- Automation Panel
 local automationFrame = Instance.new("Frame", displayFrame)
 automationFrame.Name = "AutomationFrame"
 automationFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -84,7 +100,7 @@ automationLabel.TextColor3 = Color3.new(1, 1, 1)
 automationLabel.Font = Enum.Font.SourceSansBold
 automationLabel.TextSize = 24
 
--- Misc Content
+-- Misc Panel
 local miscFrame = Instance.new("Frame", displayFrame)
 miscFrame.Name = "MiscFrame"
 miscFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -100,7 +116,7 @@ miscLabel.TextColor3 = Color3.new(1, 1, 1)
 miscLabel.Font = Enum.Font.SourceSansBold
 miscLabel.TextSize = 24
 
--- About Content
+-- About Panel
 local aboutFrame = Instance.new("Frame", displayFrame)
 aboutFrame.Name = "AboutFrame"
 aboutFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -115,29 +131,5 @@ aboutLabel.BackgroundTransparency = 1
 aboutLabel.TextColor3 = Color3.new(1, 1, 1)
 aboutLabel.Font = Enum.Font.SourceSansBold
 aboutLabel.TextSize = 24
-
-local menuCorner = Instance.new("UICorner", menuFrame)
-menuCorner.CornerRadius = UDim.new(0, 12)
-
-local displayCorner = Instance.new("UICorner", displayFrame)
-displayCorner.CornerRadius = UDim.new(0, 12)
-
--- Menu Buttons
-local buttonNames = {"Automation", "Misc", "About"}
-
-for i, name in ipairs(buttonNames) do
-    local button = Instance.new("TextButton", menuFrame)
-    button.Name = name .. "Button"
-    button.Text = name
-    button.Size = UDim2.new(1, -20, 0, 40)
-    button.Position = UDim2.new(0, 10, 0, (i - 1) * 50 + 10)
-    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-    button.TextColor3 = Color3.new(1, 1, 1)
-    button.Font = Enum.Font.SourceSansBold
-    button.TextSize = 18
-
-    local corner = Instance.new("UICorner", button)
-    corner.CornerRadius = UDim.new(0, 8)
-end
 
 return gui
