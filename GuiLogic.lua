@@ -28,9 +28,8 @@ function GuiLogic.setup(gui)
             displayFrame.Visible = true
         end
     end)
-end
 
-local function showFrame(frameName)
+	local function showFrame(frameName)
     for _, frame in pairs(gui.MainFrame.DisplayFrame:GetChildren()) do
         if frame:IsA("Frame") then
             frame.Visible = frame.Name == frameName
@@ -50,5 +49,6 @@ end)
 gui.MainFrame.MenuFrame["AboutButton"].MouseButton1Click:Connect(function()
     showFrame("AboutFrame")
 end)
+end
 
 return GuiLogic
