@@ -75,4 +75,22 @@ menuCorner.CornerRadius = UDim.new(0, 12)
 local displayCorner = Instance.new("UICorner", displayFrame)
 displayCorner.CornerRadius = UDim.new(0, 12)
 
+-- Menu Buttons
+local buttonNames = {"Auto Buy", "Settings", "About"}
+
+for i, name in ipairs(buttonNames) do
+    local button = Instance.new("TextButton", menuFrame)
+    button.Name = name .. "Button"
+    button.Text = name
+    button.Size = UDim2.new(1, -20, 0, 40)
+    button.Position = UDim2.new(0, 10, 0, (i - 1) * 50 + 10)
+    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.Font = Enum.Font.SourceSansBold
+    button.TextSize = 18
+
+    local corner = Instance.new("UICorner", button)
+    corner.CornerRadius = UDim.new(0, 8)
+end
+
 return gui
