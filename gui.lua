@@ -23,7 +23,7 @@ titleBar.BackgroundTransparency = 1
 
 local titleLabel = Instance.new("TextLabel", titleBar)
 titleLabel.Name = "TitleLabel"
-titleLabel.Text = "Germa66"
+titleLabel.Text = "Germa6611"
 titleLabel.Size = UDim2.new(1, 0, 1, 0)
 titleLabel.Position = UDim2.new(0, 0, 0, 0)
 titleLabel.TextColor3 = Color3.new(1, 1, 1)
