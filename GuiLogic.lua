@@ -7,6 +7,8 @@ function GuiLogic.setup(gui)
     local minimizeButton = titleBar:WaitForChild("MinimizeButton")
     local menuFrame = mainFrame:WaitForChild("MenuFrame")
     local displayFrame = mainFrame:WaitForChild("DisplayFrame")
+	 local Automation = loadstring(game:HttpGet("https://raw.githubusercontent.com/NinR3227/Germa66/main/Automation.lua"))()
+	 Automation.init(displayFrame:WaitForChild("AutomationFrame"))
 
     -- Close logic
     closeButton.MouseButton1Click:Connect(function()
