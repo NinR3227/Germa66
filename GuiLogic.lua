@@ -19,7 +19,7 @@ function GuiLogic.setup(gui)
         minimized = not minimized
 
         if minimized then
-            mainFrame.Size = UDim2.new(0, 300, 0, 40)
+            mainFrame.Size = UDim2.new(0, 600, 0, 40)
             menuFrame.Visible = false
             displayFrame.Visible = false
         else
@@ -29,26 +29,26 @@ function GuiLogic.setup(gui)
         end
     end)
 
-	local function showFrame(frameName)
-    for _, frame in pairs(gui.MainFrame.DisplayFrame:GetChildren()) do
-        if frame:IsA("Frame") then
-            frame.Visible = frame.Name == frameName
+    -- Display switching logic
+    local function showFrame(frameName)
+        for _, frame in pairs(displayFrame:GetChildren()) do
+            if frame:IsA("Frame") then
+                frame.Visible = frame.Name == frameName
+            end
         end
     end
-end
 
--- Button connections
-gui.MainFrame.MenuFrame["AutomationButton"].MouseButton1Click:Connect(function()
-    showFrame("AutomationFrame")
-end)
+    menuFrame["AutomationButton"].MouseButton1Click:Connect(function()
+        showFrame("AutomationFrame")
+    end)
 
-gui.MainFrame.MenuFrame["MiscButton"].MouseButton1Click:Connect(function()
-    showFrame("MiscFrame")
-end)
+    menuFrame["MiscButton"].MouseButton1Click:Connect(function()
+        showFrame("MiscFrame")
+    end)
 
-gui.MainFrame.MenuFrame["AboutButton"].MouseButton1Click:Connect(function()
-    showFrame("AboutFrame")
-end)
+    menuFrame["AboutButton"].MouseButton1Click:Connect(function()
+        showFrame("AboutFrame")
+    end)
 end
 
 return GuiLogic
