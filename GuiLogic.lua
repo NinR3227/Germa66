@@ -19,7 +19,7 @@ function GuiLogic.setup(gui)
         minimized = not minimized
 
         if minimized then
-            mainFrame.Size = UDim2.new(0, 600, 0, 40)
+            mainFrame.Size = UDim2.new(0, 60, 0, 40)
             menuFrame.Visible = false
             displayFrame.Visible = false
         else
