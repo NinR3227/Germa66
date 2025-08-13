@@ -76,7 +76,7 @@ local displayCorner = Instance.new("UICorner", displayFrame)
 displayCorner.CornerRadius = UDim.new(0, 12)
 
 -- Menu Buttons
-local buttonNames = {"Auto Buy", "Settings", "About"}
+local buttonNames = {"Automation", "Misc", "About"}
 
 for i, name in ipairs(buttonNames) do
     local button = Instance.new("TextButton", menuFrame)
