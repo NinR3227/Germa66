@@ -1,5 +1,5 @@
 local Automation = {}
-
+print("Automation is loaded")
 
 
 function Automation.init(frame)
