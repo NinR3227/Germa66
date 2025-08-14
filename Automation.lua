@@ -2,6 +2,18 @@ local Automation = {}
 
 function Automation.init(frame)
     frame:ClearAllChildren()
+	 
+	 local layout = Instance.new("UIListLayout")
+	 layout.Padding = UDim.new(0, 6)
+	 layout.SortOrder = Enum.SortOrder.LayoutOrder
+	 layout.Parent = frame
+	
+	 local padding = Instance.new("UIPadding")
+	 padding.PaddingTop = UDim.new(0, 10)
+	 padding.PaddingBottom = UDim.new(0, 10)
+	 padding.PaddingLeft = UDim.new(0, 10)
+	 padding.PaddingRight = UDim.new(0, 10)
+	 padding.Parent = frame
 
     local categories = {"Seeds", "Gears", "Eggs"}
 
