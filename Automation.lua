@@ -1,5 +1,7 @@
 local Automation = {}
 
+
+
 function Automation.init(frame)
     frame:ClearAllChildren()
 	 
@@ -22,49 +24,48 @@ function Automation.init(frame)
 	 dropdown.Name = "ItemDropdown"
 	 dropdown.Parent = frame
 
-	 local label = Instance.new("TextLabel")
-	 label.Text = "Select Item ▼"
-	 label.Size = UDim2.new(1, 0, 1, 0)
-	 label.TextColor3 = Color3.new(1, 1, 1)
-	 label.BackgroundTransparency = 1
-	 label.Parent = dropdown
+	 local dropdownLabel = Instance.new("TextLabel")
+	 dropdownLabel.Text = "Select Item ▼"
+	 dropdownLabel.Size = UDim2.new(1, 0, 1, 0)
+	 dropdownLabel.TextColor3 = Color3.new(1, 1, 1)
+	 dropdownLabel.BackgroundTransparency = 1
+	 dropdownLabel.Parent = dropdown
 
-	 local itemList = {"Item A", "Item B", "Item C"} -- Temporary list
+	local itemList = {"Item A", "Item B", "Item C"} -- Temporary list
+local expanded = false
 
-	 local expanded = false
-	 label.MouseButton1Click:Connect(function()
-	     expanded = not expanded
-	     if expanded then
-	         for _, item in ipairs(itemList) do
-	             local option = Instance.new("TextButton")
-	             option.Text = item
-	             option.Size = UDim2.new(1, 0, 0, 30)
-	             option.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-	             option.TextColor3 = Color3.new(1, 1, 1)
-	             option.Parent = dropdown
+label.MouseButton1Click:Connect(function()
+    expanded = not expanded
+    optionContainer.Visible = expanded
 
-	             option.MouseButton1Click:Connect(function()
-	                 label.Text = item .. " ▼"
-	                 for _, child in ipairs(dropdown:GetChildren()) do
-	                     if child:IsA("TextButton") then child:Destroy() end
-	                 end
-	                 expanded = false
-	             end)
-	         end
-	     else
-	         for _, child in ipairs(dropdown:GetChildren()) do
-	             if child:IsA("TextButton") then child:Destroy() end
-	         end
-	     end
-	 end)
+    if expanded and #optionContainer:GetChildren() == 0 then
+        for _, item in ipairs(itemList) do
+            local option = Instance.new("TextButton")
+            option.Text = item
+            option.Size = UDim2.new(1, 0, 0, 30)
+            option.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+            option.TextColor3 = Color3.new(1, 1, 1)
+            option.Parent = optionContainer
+
+            option.MouseButton1Click:Connect(function()
+                label.Text = item .. " ▼"
+                optionContainer.Visible = false
+                expanded = false
+                -- Optional: callback or print
+                print("Selected:", item)
+            end)
+        end
+    end
+end)
 
     local categories = {"Seeds", "Gears", "Eggs"}
 
     for i, category in ipairs(categories) do
         local section = Instance.new("Frame", frame)
         section.Name = category .. "Section"
-        section.Size = UDim2.new(0, 560, 0, 100)
-        section.Position = UDim2.new(0, 20, 0, (i - 1) * 120 + 10)
+        section.Size = UDim2.new(1, -20, 0, 100)
+        section.Position = UDim2.new(0, 10, 0, 0)
+		  section.AutomaticSize = Enum.AutomaticSize.Y
         section.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
         section.BorderSizePixel = 0
         Instance.new("UICorner", section).CornerRadius = UDim.new(0, 8)
