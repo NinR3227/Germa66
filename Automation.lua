@@ -31,32 +31,32 @@ function Automation.init(frame)
 	 dropdownLabel.BackgroundTransparency = 1
 	 dropdownLabel.Parent = dropdown
 
-	local itemList = {"Item A", "Item B", "Item C"} -- Temporary list
-local expanded = false
+	 local itemList = {"Item A", "Item B", "Item C"} -- Temporary list
+	 local expanded = false
 
-label.MouseButton1Click:Connect(function()
-    expanded = not expanded
-    optionContainer.Visible = expanded
+	 label.MouseButton1Click:Connect(function()
+    	 expanded = not expanded
+    	 optionContainer.Visible = expanded
 
-    if expanded and #optionContainer:GetChildren() == 0 then
-        for _, item in ipairs(itemList) do
-            local option = Instance.new("TextButton")
-            option.Text = item
-            option.Size = UDim2.new(1, 0, 0, 30)
-            option.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-            option.TextColor3 = Color3.new(1, 1, 1)
-            option.Parent = optionContainer
-
-            option.MouseButton1Click:Connect(function()
-                label.Text = item .. " ▼"
-                optionContainer.Visible = false
-                expanded = false
-                -- Optional: callback or print
-                print("Selected:", item)
-            end)
-        end
-    end
-end)
+    	 if expanded and #optionContainer:GetChildren() == 0 then
+    	     for _, item in ipairs(itemList) do
+    	         local option = Instance.new("TextButton")
+    	         option.Text = item
+    	         option.Size = UDim2.new(1, 0, 0, 30)
+    	         option.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    	         option.TextColor3 = Color3.new(1, 1, 1)
+    	         option.Parent = optionContainer
+	
+    	         option.MouseButton1Click:Connect(function()
+    	             label.Text = item .. " ▼"
+    	             optionContainer.Visible = false
+    	             expanded = false
+    	             -- Optional: callback or print
+    	             print("Selected:", item)
+    	         end)
+    	     end
+    	 end
+	 end)
 
     local categories = {"Seeds", "Gears", "Eggs"}
 
