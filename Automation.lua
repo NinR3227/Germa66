@@ -14,6 +14,49 @@ function Automation.init(frame)
 	 padding.PaddingLeft = UDim.new(0, 10)
 	 padding.PaddingRight = UDim.new(0, 10)
 	 padding.Parent = frame
+	
+	 -- Line 15: Add dropdown mockup
+	 local dropdown = Instance.new("Frame")
+	 dropdown.Size = UDim2.new(1, 0, 0, 30)
+	 dropdown.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	 dropdown.Name = "ItemDropdown"
+	 dropdown.Parent = frame
+
+	 local label = Instance.new("TextLabel")
+	 label.Text = "Select Item ▼"
+	 label.Size = UDim2.new(1, 0, 1, 0)
+	 label.TextColor3 = Color3.new(1, 1, 1)
+	 label.BackgroundTransparency = 1
+	 label.Parent = dropdown
+
+	 local itemList = {"Item A", "Item B", "Item C"} -- Temporary list
+
+	 local expanded = false
+	 label.MouseButton1Click:Connect(function()
+	     expanded = not expanded
+	     if expanded then
+	         for _, item in ipairs(itemList) do
+	             local option = Instance.new("TextButton")
+	             option.Text = item
+	             option.Size = UDim2.new(1, 0, 0, 30)
+	             option.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+	             option.TextColor3 = Color3.new(1, 1, 1)
+	             option.Parent = dropdown
+
+	             option.MouseButton1Click:Connect(function()
+	                 label.Text = item .. " ▼"
+	                 for _, child in ipairs(dropdown:GetChildren()) do
+	                     if child:IsA("TextButton") then child:Destroy() end
+	                 end
+	                 expanded = false
+	             end)
+	         end
+	     else
+	         for _, child in ipairs(dropdown:GetChildren()) do
+	             if child:IsA("TextButton") then child:Destroy() end
+	         end
+	     end
+	 end)
 
     local categories = {"Seeds", "Gears", "Eggs"}
 
