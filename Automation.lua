@@ -30,11 +30,23 @@ function Automation.init(frame)
 	 dropdownLabel.TextColor3 = Color3.new(1, 1, 1)
 	 dropdownLabel.BackgroundTransparency = 1
 	 dropdownLabel.Parent = dropdown
+	 
+	 local optionContainer = Instance.new("Frame")
+	 optionContainer.Name = "OptionContainer"
+	 optionContainer.Size = UDim2.new(1, 0, 0, #itemList * 30)
+	 optionContainer.Position = UDim2.new(0, 0, 0, 30)
+	 optionContainer.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+	 optionContainer.Visible = false
+	 optionContainer.Parent = frame
+
+	 local optionLayout = Instance.new("UIListLayout", optionContainer)
+	 optionLayout.Padding = UDim.new(0, 2)
+	 optionLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
 	 local itemList = {"Item A", "Item B", "Item C"} -- Temporary list
 	 local expanded = false
 
-	 label.MouseButton1Click:Connect(function()
+	 dropdownLabel.MouseButton1Click:Connect(function()
     	 expanded = not expanded
     	 optionContainer.Visible = expanded
 
@@ -47,13 +59,12 @@ function Automation.init(frame)
     	         option.TextColor3 = Color3.new(1, 1, 1)
     	         option.Parent = optionContainer
 	
-    	         option.MouseButton1Click:Connect(function()
-    	             label.Text = item .. " ▼"
-    	             optionContainer.Visible = false
-    	             expanded = false
-    	             -- Optional: callback or print
-    	             print("Selected:", item)
-    	         end)
+					option.MouseButton1Click:Connect(function()
+    					dropdownLabel.Text = item .. " ▼"
+    					optionContainer.Visible = false
+    					expanded = false
+    					print("Selected:", item)
+					end)
     	     end
     	 end
 	 end)
