@@ -41,8 +41,10 @@ function GuiLogic.setup(gui)
     end
 
     menuFrame["AutomationButton"].MouseButton1Click:Connect(function()
-        showFrame("AutomationFrame")
-    end)
+	 		showFrame("AutomationFrame")
+			local Automation = loadstring(game:Httpget("https://raw.githubusercontent.com/NinR3227/Germa66/main/Automation.lua"))()
+			Automation.init(displayFrame:WaitForChild("AutomationFrame"))
+	end)
 
     menuFrame["MiscButton"].MouseButton1Click:Connect(function()
         showFrame("MiscFrame")
